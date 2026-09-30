@@ -1,10 +1,579 @@
-<h1>
-   Hello php
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Food Junction</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    * {
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Fade animation */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      animation: fadeUp 1s ease forwards;
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(90deg, #f97316, #ef4444);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* Food card hover */
+    .food-card {
+      transition: all 0.4s ease;
+    }
+
+    .food-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.12);
+    }
+
+    /* Button animation */
+    .order-btn {
+      transition: all 0.3s ease;
+    }
+
+    .order-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(249,115,22,0.3);
+    }
+  </style>
+</head>
+
+<body class="bg-orange-50 text-gray-800">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <a href="#" class="text-2xl font-extrabold">
+        🍔 <span class="gradient-text">Food Junction</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 font-medium">
+        <a href="#home" class="hover:text-orange-500 transition">Home</a>
+        <a href="#menu" class="hover:text-orange-500 transition">Menu</a>
+        <a href="#about" class="hover:text-orange-500 transition">About</a>
+        <a href="#contact" class="hover:text-orange-500 transition">Contact</a>
+      </div>
+
+      <a
+        href="#menu"
+        class="hidden md:block bg-orange-500 text-white px-5 py-2 rounded-full order-btn"
+      >
+        Order Now
+      </a>
+
+      <!-- Mobile menu button -->
+      <button id="menuBtn" class="md:hidden text-2xl">
+        ☰
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white px-6 pb-5">
+      <a href="#home" class="block py-2">Home</a>
+      <a href="#menu" class="block py-2">Menu</a>
+      <a href="#about" class="block py-2">About</a>
+      <a href="#contact" class="block py-2">Contact</a>
+    </div>
+  </header>
 
 
- <?php
+  <!-- ================= HERO ================= -->
+  <section id="home" class="min-h-screen pt-32 pb-16 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-12">
 
-    echo "Hello world ";
+      <!-- Hero Text -->
+      <div class="fade-up">
 
-?>
+        <span class="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-semibold mb-5">
+          🔥 Fresh & Delicious
+        </span>
+
+        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+          Taste the
+          <span class="gradient-text">Happiness</span>
+        </h1>
+
+        <p class="text-gray-600 text-lg mt-6 max-w-lg">
+          Welcome to Food Junction — your favorite destination for
+          delicious burgers, pizzas, pasta and much more.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mt-8">
+
+          <a
+            href="#menu"
+            class="bg-orange-500 text-white px-7 py-3 rounded-full font-semibold order-btn"
+          >
+            🍕 Explore Menu
+          </a>
+
+          <a
+            href="#about"
+            class="border-2 border-orange-500 text-orange-500 px-7 py-3 rounded-full font-semibold hover:bg-orange-500 hover:text-white transition"
+          >
+            Learn More
+          </a>
+
+        </div>
+
+        <div class="flex gap-8 mt-10">
+
+          <div>
+            <h3 class="text-2xl font-bold">20+</h3>
+            <p class="text-gray-500 text-sm">Food Items</p>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold">10K+</h3>
+            <p class="text-gray-500 text-sm">Happy Customers</p>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold">4.9 ⭐</h3>
+            <p class="text-gray-500 text-sm">Customer Rating</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="flex justify-center">
+
+        <div class="relative">
+
+          <div class="absolute inset-0 bg-orange-300 rounded-full blur-3xl opacity-30"></div>
+
+          <img
+            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"
+            alt="Burger"
+            class="relative w-80 h-80 md:w-[450px] md:h-[450px] object-cover rounded-full shadow-2xl float"
+          />
+
+          <div class="absolute -bottom-5 -left-5 bg-white shadow-xl rounded-2xl px-5 py-4">
+            <p class="text-sm text-gray-500">Today's Special</p>
+            <p class="font-bold text-orange-500">Cheesy Burger 🍔</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= MENU ================= -->
+  <section id="menu" class="py-20 px-6 bg-white">
+
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-14">
+        <span class="text-orange-500 font-semibold">
+          OUR SPECIAL MENU
+        </span>
+
+        <h2 class="text-4xl md:text-5xl font-bold mt-2">
+          Popular <span class="gradient-text">Dishes</span>
+        </h2>
+
+        <p class="text-gray-500 mt-4">
+          Made with fresh ingredients and lots of love ❤️
+        </p>
+      </div>
+
+
+      <!-- Food Cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <!-- Card 1 -->
+        <div class="food-card bg-orange-50 rounded-3xl overflow-hidden">
+
+          <img
+            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+            class="w-full h-52 object-cover"
+            alt="Burger"
+          >
+
+          <div class="p-5">
+
+            <div class="flex justify-between items-center">
+              <h3 class="text-xl font-bold">Cheese Burger</h3>
+              <span class="text-orange-500 font-bold">₹199</span>
+            </div>
+
+            <p class="text-gray-500 text-sm mt-2">
+              Juicy burger with cheese and fresh vegetables.
+            </p>
+
+            <button class="w-full mt-5 bg-orange-500 text-white py-2.5 rounded-full order-btn">
+              Add to Cart
+            </button>
+
+          </div>
+        </div>
+
+
+        <!-- Card 2 -->
+        <div class="food-card bg-orange-50 rounded-3xl overflow-hidden">
+
+          <img
+            src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80"
+            class="w-full h-52 object-cover"
+            alt="Pizza"
+          >
+
+          <div class="p-5">
+
+            <div class="flex justify-between items-center">
+              <h3 class="text-xl font-bold">Italian Pizza</h3>
+              <span class="text-orange-500 font-bold">₹299</span>
+            </div>
+
+            <p class="text-gray-500 text-sm mt-2">
+              Crispy crust pizza loaded with cheese and toppings.
+            </p>
+
+            <button class="w-full mt-5 bg-orange-500 text-white py-2.5 rounded-full order-btn">
+              Add to Cart
+            </button>
+
+          </div>
+        </div>
+
+
+        <!-- Card 3 -->
+        <div class="food-card bg-orange-50 rounded-3xl overflow-hidden">
+
+          <img
+            src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80"
+            class="w-full h-52 object-cover"
+            alt="Pasta"
+          >
+
+          <div class="p-5">
+
+            <div class="flex justify-between items-center">
+              <h3 class="text-xl font-bold">Creamy Pasta</h3>
+              <span class="text-orange-500 font-bold">₹249</span>
+            </div>
+
+            <p class="text-gray-500 text-sm mt-2">
+              Creamy Italian pasta prepared with fresh herbs.
+            </p>
+
+            <button class="w-full mt-5 bg-orange-500 text-white py-2.5 rounded-full order-btn">
+              Add to Cart
+            </button>
+
+          </div>
+        </div>
+
+
+        <!-- Card 4 -->
+        <div class="food-card bg-orange-50 rounded-3xl overflow-hidden">
+
+          <img
+            src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"
+            class="w-full h-52 object-cover"
+            alt="French Fries"
+          >
+
+          <div class="p-5">
+
+            <div class="flex justify-between items-center">
+              <h3 class="text-xl font-bold">French Fries</h3>
+              <span class="text-orange-500 font-bold">₹129</span>
+            </div>
+
+            <p class="text-gray-500 text-sm mt-2">
+              Crispy golden fries with our special seasoning.
+            </p>
+
+            <button class="w-full mt-5 bg-orange-500 text-white py-2.5 rounded-full order-btn">
+              Add to Cart
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="py-20 px-6">
+
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+      <div>
+        <img
+          src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=80"
+          alt="Restaurant"
+          class="rounded-3xl shadow-xl w-full"
+        >
+      </div>
+
+      <div>
+
+        <span class="text-orange-500 font-semibold">
+          ABOUT FOOD JUNCTION
+        </span>
+
+        <h2 class="text-4xl md:text-5xl font-bold mt-3">
+          Good Food,
+          <span class="gradient-text">Good Mood.</span>
+        </h2>
+
+        <p class="text-gray-600 mt-6 leading-8">
+          At Food Junction, we believe that food is more than just a meal.
+          It's an experience. Our chefs use fresh ingredients and creative
+          recipes to serve delicious food that brings people together.
+        </p>
+
+        <div class="grid grid-cols-2 gap-5 mt-8">
+
+          <div class="bg-white p-5 rounded-2xl shadow-md">
+            <span class="text-3xl">🥗</span>
+            <h3 class="font-bold mt-2">Fresh Food</h3>
+            <p class="text-sm text-gray-500">
+              Fresh ingredients every day.
+            </p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl shadow-md">
+            <span class="text-3xl">👨‍🍳</span>
+            <h3 class="font-bold mt-2">Expert Chefs</h3>
+            <p class="text-sm text-gray-500">
+              Prepared by skilled chefs.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= CTA ================= -->
+  <section class="py-20 px-6">
+
+    <div class="max-w-6xl mx-auto bg-gradient-to-r from-orange-500 to-red-500 rounded-3xl p-10 md:p-16 text-center text-white shadow-xl">
+
+      <h2 class="text-4xl md:text-5xl font-bold">
+        Hungry Yet? 🍔
+      </h2>
+
+      <p class="mt-4 text-orange-100">
+        Your favorite food is just one click away.
+      </p>
+
+      <a
+        href="#menu"
+        class="inline-block mt-8 bg-white text-orange-500 px-8 py-3 rounded-full font-bold hover:scale-105 transition"
+      >
+        Order Your Food
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="py-20 px-6 bg-white">
+
+    <div class="max-w-4xl mx-auto text-center">
+
+      <span class="text-orange-500 font-semibold">
+        GET IN TOUCH
+      </span>
+
+      <h2 class="text-4xl font-bold mt-2">
+        Contact <span class="gradient-text">Us</span>
+      </h2>
+
+      <form class="mt-10 grid md:grid-cols-2 gap-5 text-left">
+
+        <input
+          type="text"
+          placeholder="Your Name"
+          class="border border-gray-200 rounded-xl px-5 py-3 outline-none focus:ring-2 focus:ring-orange-400"
+        >
+
+        <input
+          type="email"
+          placeholder="Your Email"
+          class="border border-gray-200 rounded-xl px-5 py-3 outline-none focus:ring-2 focus:ring-orange-400"
+        >
+
+        <textarea
+          placeholder="Your Message"
+          rows="5"
+          class="md:col-span-2 border border-gray-200 rounded-xl px-5 py-3 outline-none focus:ring-2 focus:ring-orange-400"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="md:col-span-2 bg-orange-500 text-white py-3 rounded-xl font-semibold order-btn"
+        >
+          Send Message 🚀
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-gray-900 text-white py-10 px-6">
+
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+
+      <div>
+        <h2 class="text-2xl font-bold">
+          🍔 Food Junction
+        </h2>
+
+        <p class="text-gray-400 mt-3">
+          Delicious food. Happy moments.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-bold mb-3">Quick Links</h3>
+
+        <div class="flex flex-col gap-2 text-gray-400">
+          <a href="#home" class="hover:text-orange-400">Home</a>
+          <a href="#menu" class="hover:text-orange-400">Menu</a>
+          <a href="#about" class="hover:text-orange-400">About</a>
+          <a href="#contact" class="hover:text-orange-400">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-bold mb-3">Follow Us</h3>
+
+        <div class="flex gap-4 text-2xl">
+          <a href="#" class="hover:text-orange-400">📘</a>
+          <a href="#" class="hover:text-orange-400">📸</a>
+          <a href="#" class="hover:text-orange-400">🐦</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center text-gray-500 border-t border-gray-800 mt-8 pt-6">
+      © 2026 Food Junction. All Rights Reserved.
+    </div>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+
+    // Mobile menu
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+
+    // Close mobile menu after clicking link
+    document.querySelectorAll("#mobileMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+    });
+
+
+    // Contact form
+    document.querySelector("form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      alert("Thank you! Your message has been sent successfully. 🍔");
+
+      this.reset();
+    });
+
+
+    // Add to cart buttons
+    document.querySelectorAll(".food-card button").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const originalText = button.innerText;
+
+        button.innerText = "✓ Added to Cart";
+
+        button.classList.remove("bg-orange-500");
+        button.classList.add("bg-green-500");
+
+        setTimeout(() => {
+          button.innerText = originalText;
+
+          button.classList.remove("bg-green-500");
+          button.classList.add("bg-orange-500");
+        }, 1500);
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
